@@ -1,8 +1,7 @@
-$origin = location
-$origin 
+# $origin = location
+
+# pout $PSCommandPath
+
 foreach ($arg in $args) {
-    kali
-    cd $origin
-    touch $arg
-    exit 0
+    wsl touch $arg
 }
