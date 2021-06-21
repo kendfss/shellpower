@@ -1,25 +1,12 @@
-param(
-    [string]$links
-)
-
-$sep = ','
-$destination = "c:\users\kenneth\videos\ytdls"
+$destination = "F:\ytdls"
 $origin = location
-$links -split ','
+$n = 0
 
-cd $destination
-
-$n = 1
-
-''
-''
-''
-''
-foreach ($link in $links -split $sep) {
-    [string]::Format("{0} of {1}", $n, ($links -split $sep).length)
-    youtube-dl $link
+foreach ($link in $args) {
     $n += 1
-    date
+    cd $destination
+    [string]::Format("{0} of {1}", $n, $args.length)
+    youtube-dl $link
     cd $origin
     ''
     ''
@@ -27,4 +14,6 @@ foreach ($link in $links -split $sep) {
     ''
 }
 
-start $destination
+foreach ($i in $(1..$n)) {
+    play (get-random)
+}

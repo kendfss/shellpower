@@ -1,0 +1,1 @@
+c:/windows/system32/rundll32.exe c:/windows/system32/shell32.dll,Control_RunDLL c:/windows/system32/mmsys.cpl
