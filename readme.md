@@ -59,6 +59,7 @@ Echo n blank lines
 
 
 ```
+- *See Also:* [goc](#goc)  
 
 ##### ccd
 copy current directory to clibpoard
@@ -107,7 +108,8 @@ Clears the screen before implementing [cdls](#cdls) and returning to starting di
 # closes fl64.exe
 ```
 - *See Also:* [cdls](#cdls)  
-- *See Also:* [dls](#dls) 
+- *See Also:* [dls](#dls)  
+- *See Also:* [names](#names)  
 
 ##### dls
 Clears the screen before implementing [cdls](#cdls)
@@ -116,7 +118,8 @@ Clears the screen before implementing [cdls](#cdls)
 # closes fl64.exe
 ```
 - *See Also:* [cdls](#cdls)  
-- *See Also:* [cls](#cls) 
+- *See Also:* [cls](#cls)  
+- *See Also:* [names](#names)  
 
 ##### download
 Download a file from the internet
@@ -137,16 +140,17 @@ Execute a sequence of commands in succession
 
 
 ##### ext
-Scan a sequence of directories for files with a given extension
+Scan the current directory for files matching given extensions
 ```powershell
-> ext "extension" "directory 1" ... "directory n"
+> ext "extension 1" "extension 2" ... "extension n"
 ```
+- *See Also:* [next](#next)  
 
 
 ##### ffhere
-Play files in tne current directory with [ffmpeg]()'s [ffplay]() program
+Play files in tne current directory with [ffmpeg](https://ffmpeg.org/ffmpeg.html)'s [ffplay](https://ffmpeg.org/ffplay.html) program
 ```powershell
-> ffhere
+> ffhere 1 2 3
 # will play the 1st 2nd and 3rd files listed in an "ls" call
 > ffhere
 # will play everything in the current directory
@@ -161,20 +165,29 @@ Open foobar2000
 - *Assumes:* it is installed at *"C:\Program Files (x86)\foobar2000"*  
 
 
+##### goc
+Go doc any number of arguments
+```powershell
+> goc image.decode os.executable io/fs
+```
+- *Assumes:* [Golang](https://golang.org) has been installed  
+- *See Also:* [blank](#blank)   
+
+
 ##### gosite
 cd into ```$env:gopath```  
 ```powershell
 > gosite
 ```
-- *Assumes:* [Golang]() has been installed  
+- *Assumes:* [Golang](https://golang.org) has been installed  
 
 
 ##### gosrc
-cd into the directory above thee
+cd into the directory above the golang installation's /bin
 ```powershell
 > gosrc
 ```
-- *Assumes:* [Golang]() has been installed and its */bin* directory is on the *path* variable
+- *Assumes:* [Golang](https://golang.org) has been installed and its */bin* directory is on the *path* variable
 
 
 ##### goto
@@ -247,36 +260,51 @@ Opens the mozilla mdn docs in explorer
 ##### names
 run `ls -n` aka `get-childitem -n`
 ```powershell
-> names
+> names arg1 arg2 argN
 ```
-
+- *See Also:* [cdls](#cdls)  
+- *See Also:* [cls](#cls)  
+- *See Also:* [dls](#dls) 
 
 ##### nameSpacer
-Check if a given path exists and return a version of it that does not
+Check if a given path exists and return a version of it that doesn't
 ```powershell
 > nameSpacer c:/users
 c:/users_2
 ```
 
+##### next
+Scan a sequence of directories for names matching a given extension
+```powershell
+> ext "extension" "directory 1" ... "directory n"
+```
+- *See Also:* [ext](#ext)  
 
 ##### new
 Create a new powershell script  
 ```powershell
-> new
+> new name1 name2 ... nameN 
+# will create:
+    # $base/name1.ps1
+    # $base/name2.ps1
+    ...
+    # $base/nameN.ps1
+# and open each one in a text editor
 ```
+
 
 
 ##### np
 open in notepad  
 ```powershell
-> np
+> np file/path
 ```
 
 
 ##### npp
 open in notepad++  
 ```powershell
-> npp
+> npp path/to/some/thing/or/place
 ```
 - Assumes you have an alias for notepad++ as "n++" in your path or $profile  
 
@@ -372,13 +400,13 @@ Cat the readme.md files of multiple directories by simply stating the folder nam
 ##### recycle
 Send path to the recycle bin
 ```powershell
-> recycle
+> recycle path1 path2 pathN
 ```
 - Currently broken  
 
 
 ##### scrap
-Rage quit your project by sending it to the recycle bin  
+Rage quit the project in the current directory by sending it to the recycle bin  
 ```powershell
 > scrap
 ```
@@ -395,14 +423,14 @@ Open the sound control panel
 ##### splee2
 Split an audio stream into a vocal and instrumental track
 ```powershell
-> splee2
+> splee2 path/to/audio/file
 ```
 - Assumes you have python and have previously installed [spleeter](https://github.com/deezer/spleeter)
 
 ##### splee4
 Split an audio stream into a vocal, instrumental, drum, bass, and piano tracks
 ```powershell
-> splee4
+> splee4 path/to/audio/file
 ```
 - Assumes you have python and have previously installed [spleeter](https://github.com/deezer/spleeter)
 
@@ -410,7 +438,7 @@ Split an audio stream into a vocal, instrumental, drum, bass, and piano tracks
 ##### splee5
 Split an audio stream into a vocal, instrumental, drum, bass, and piano tracks
 ```powershell
-> splee5
+> splee5 path/to/audio/file
 ```
 - Assumes you have python and have previously installed [spleeter](https://github.com/deezer/spleeter)
 
@@ -438,7 +466,7 @@ ssh into tilde
 
 
 ##### unix
-Convert a path to wsl-unix form and sends it to the clip-board
+Convert the path of the current directory to wsl-unix form and send it to the clip-board
 ```powershell
 > unix
 ```
@@ -447,7 +475,7 @@ Convert a path to wsl-unix form and sends it to the clip-board
 ##### yda
 Youtube download the audio streams associated with a sequence of arguments
 ```powershell
-> yda
+> yda url1 url2 urlN
 ```
 - Assumes you have installed [youtube-dl](https://github.com/ytdl-org/youtube-dl)
 
@@ -455,7 +483,7 @@ Youtube download the audio streams associated with a sequence of arguments
 ##### ydl
 Youtube download the audio streams associated with a sequence of arguments
 ```powershell
-> ydl
+> ydl url1 url2 urlN
 ```
 - Assumes you have installed [youtube-dl](https://github.com/ytdl-org/youtube-dl)
  
