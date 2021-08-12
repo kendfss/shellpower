@@ -1,1 +1,1 @@
-start "E:\gitting\gitclone\clones\mdn\content\files\en-us"
+start $mdn

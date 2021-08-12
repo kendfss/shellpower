@@ -1,8 +1,7 @@
 # ShellPower
-<!-- <center><h1>ShellPower</h1></center> -->
 
 _**what**_  
-A collection of powershell scripts to help aid and play flows
+A collection of powershell scripts to help aid and play flows  
 
 [_**how**_](#usage)  
 
@@ -22,6 +21,11 @@ You *__will__* have to personalize:
 - [splee4](#splee4)  
 - [splee5](#splee5)  
 - [sublime_docs](#sublime_docs)  
+- [st](#st)  
+- [new](#new)  
+- [profile](#profile)  
+- [ytdls](#ytdls)  
+- [gitfast](#gitfast)  
 
 You *__may__* have to personalize:  
 - [foo](#foo)  
@@ -36,14 +40,14 @@ The three "splee" scripts enable the user to use Deezer's Spleeter CLI in a batc
 The number corresponds to the number of audio tracks the corresponding model is capable of parsing from a single source.  
 
 ##### alert
-Produce a sequence of n beeps with random frequency
+Produce a sequence of n beeps with random frequency  
 ```powershell
 > alert 3
 ```
 - *Requires:* [play](#play)  
 
 ##### bar
-Echo a line of text comprised by a repetition of your chosen string
+Echo a line of text comprised by a repetition of your chosen string  
 ```powershell
 > bar 3
 ***
@@ -52,7 +56,7 @@ qwertyqwertyqwerty
 ```
 
 ##### blank
-Echo n blank lines
+Echo n blank lines  
 ```powershell
 > blank 3
 
@@ -62,18 +66,18 @@ Echo n blank lines
 - *See Also:* [goc](#goc)  
 
 ##### ccd
-copy current directory to clibpoard
+copy current directory to clibpoard  
 ```powershell
 > ccd
 ```
 - *See Also:* [pcd](#pcd)  
 
 ##### cdls
-CD to and run LS in consecutive directories
+CD to and run LS in consecutive directories  
 ```powershell
 > cdls folder1 ../folder2 folder3 
 ```
-Is equal to
+Is equal to  
 ```powershell
 > cd folder1; ls; cd ..; cd folder2; ls; cd folder3; ls
 ```
@@ -82,27 +86,32 @@ Is equal to
 - *See Also:* [dls](#dls)  
 
 ##### cdn
-Same as [cdls](#cdls) except it only prints the names of the directory contents as opposed to default windows behaviour (which is the same as ls -l on unix)
+Same as [cdls](#cdls) except it only prints the names of the directory contents as opposed to default windows behaviour (which is the same as ls -l on unix)  
 ```powershell
 > cdn folder1 ../folder2 folder3 
 ```
 - *See Also:* [names](#names)  
 
+##### choose
+Same as [cpr](#cpr) except it accepts arguments manually  
+```powershell
+> choose (exts mkv webm mp4)
+```
 ##### clone
-Open your git cloning manager
+Open your git cloning manager  
 ```powershell
 > clone 
 ```
 
 ##### close
-Close a running process
+Close a running process  
 ```powershell
 > close fl64 
 # closes fl64.exe
 ```
 
 ##### cls
-Clears the screen before implementing [cdls](#cdls) and returning to starting directory
+Clears the screen before implementing [cdls](#cdls) and returning to starting directory  
 ```powershell
 > cls folder1 ../folder2 folder3 
 # closes fl64.exe
@@ -111,8 +120,15 @@ Clears the screen before implementing [cdls](#cdls) and returning to starting di
 - *See Also:* [dls](#dls)  
 - *See Also:* [names](#names)  
 
+##### cpr
+Copy the name of a random item in the current directory to the clipboard  
+```powershell
+> cpr
+```
+- *See Also:* [names](#names)  
+
 ##### dls
-Clears the screen before implementing [cdls](#cdls)
+Clears the screen before implementing [cdls](#cdls)  
 ```powershell
 > cls folder1 ../folder2 folder3 
 # closes fl64.exe
@@ -122,7 +138,7 @@ Clears the screen before implementing [cdls](#cdls)
 - *See Also:* [names](#names)  
 
 ##### download
-Download a file from the internet
+Download a file from the internet  
 ```powershell
 > download source.url destination/file.path
 ```
@@ -132,15 +148,15 @@ Download a file from the internet
 
 
 ##### exec
-Execute a sequence of commands in succession
+Execute a sequence of commands in succession  
 ```powershell
 > exec "command 1" ... "command n"
 ```
-- *Wrapper on **invoke-expression***
+- *Wrapper on **invoke-expression***  
 
 
 ##### ext
-Scan the current directory for files matching given extensions
+Scan the current directory for files matching given extensions  
 ```powershell
 > ext "extension 1" "extension 2" ... "extension n"
 ```
@@ -148,7 +164,7 @@ Scan the current directory for files matching given extensions
 
 
 ##### ffhere
-Play files in tne current directory with [ffmpeg](https://ffmpeg.org/ffmpeg.html)'s [ffplay](https://ffmpeg.org/ffplay.html) program
+Play files in tne current directory with [ffmpeg](https://ffmpeg.org/ffmpeg.html)'s [ffplay](https://ffmpeg.org/ffplay.html) program  
 ```powershell
 > ffhere 1 2 3
 # will play the 1st 2nd and 3rd files listed in an "ls" call
@@ -156,9 +172,37 @@ Play files in tne current directory with [ffmpeg](https://ffmpeg.org/ffmpeg.html
 # will play everything in the current directory
 ```
 
+##### ffp
+[FFPlay](https://ffmpeg.org/ffplay.html) files from the clipbboard or passed as argument  
+```powershell
+> ffp
+# get clipboard, split by line break, play each file
+> ffp (names | grep -i "search criteria")
+# will play every file in the current directory whose name matches "search criteria"
+```
+
+##### files
+Echo the names of the files in an `get-childitem -file -names` call of each argument (assuming it is a path to a directory)  
+```powershell
+> files dir1 dir2 dir3
+# will look in the 1st 2nd and 3rd directories passed as arguments
+> files
+# will look in the current directory
+```
+
+##### folders
+Echo the names of the folders in an `get-childitem -directory -names` call of each argument (assuming it is a path to a directory)  
+```powershell
+> folders dir1 dir2 dir3
+# will look in the 1st 2nd and 3rd directories passed as arguments
+> folders
+# will look in the current directory
+```
+
+
 
 ##### foo
-Open foobar2000
+Open foobar2000  
 ```powershell
 > foo
 ```
@@ -166,12 +210,28 @@ Open foobar2000
 
 
 ##### goc
-Go doc any number of arguments
+Go doc any number of arguments  
 ```powershell
 > goc image.decode os.executable io/fs
 ```
 - *Assumes:* [Golang](https://golang.org) has been installed  
-- *See Also:* [blank](#blank)   
+- *See Also:* [blank](#blank)  
+
+
+##### gitfast
+Quickly init, commit, and push a directory to github  
+```powershell
+> gitfast "repo-name"
+```
+- *Assumes:* You're tryin to push to this github page  
+
+
+##### gomo
+Spin up a demo project for go. Assumes you have content for a "main.go" file in clipboard.  
+```powershell
+> gomo demo_project_name/or/path
+```
+- *Assumes:* [Golang](https://golang.org) has been installed  
 
 
 ##### gosite
@@ -183,18 +243,25 @@ cd into ```$env:gopath```
 
 
 ##### gosrc
-cd into the directory above the golang installation's /bin
+cd into the directory above the golang installation's /bin  
 ```powershell
 > gosrc
 ```
-- *Assumes:* [Golang](https://golang.org) has been installed and its */bin* directory is on the *path* variable
+- *Assumes:* [Golang](https://golang.org) has been installed and its */bin* directory is on the *path* variable  
 
 
 ##### goto
-Open the directory containing a given executable which is accessible via the *path* environment variable. Also echoes the path of the executable
+Open the directory containing a given executable which is accessible via the *path* environment variable. Also echoes the path of the executable  
 ```powershell
 > goto powershell
 C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+```
+
+
+##### gun
+Go run your Golang source file  
+```powershell
+> gun path/to/my/main/file.go
 ```
 
 
@@ -208,7 +275,7 @@ Play happy birthday with lyrics
 
 
 ##### ind
-Echo the index of an element of a countable iterable
+Echo the index of an element of a countable iterable  
 ```powershell
 > ind 1 3
 1 of 3
@@ -216,21 +283,21 @@ Echo the index of an element of a countable iterable
 
 
 ##### isdir
-Check if a path is a directory in the file system
+Check if a path is a directory in the file system  
 ```powershell
 > isdir path/in/question
 ```
 
 
 ##### isfile
-Check if a path is a file in the file system
+Check if a path is a file in the file system  
 ```powershell
 > isfile path/in/question
 ```
 
 
 ##### isit
-Return the boolean values associated with arguments
+Return the boolean values associated with arguments  
 ```powershell
 > isit arg1 arg2 ... argN
 ```
@@ -238,7 +305,7 @@ Return the boolean values associated with arguments
 
 
 ##### mcd
-Create a whole tree with a single command
+Create a whole tree with a single command  
 ```powershell
 > mcd folder1 ../folder2 folder3
 # equals md folder1; cd folder1; cd ..; md folder2; cd folder2; md folder3; cd folder3 
@@ -251,32 +318,35 @@ Create a whole tree with a single command
 
 
 ##### mdn
-Opens the mozilla mdn docs in explorer
+Opens the mozilla mdn docs in explorer  
 ```powershell
 > mdn
 ```
+- assumes you've set a `$mdn` variable  
 
 
 ##### names
-run `ls -n` aka `get-childitem -n`
+run `ls -n` aka `get-childitem -n` and filter for files whose names match arguments  
 ```powershell
 > names arg1 arg2 argN
 ```
+- case insensitive
+<!-- - will include directories unless some file is given, use an empty string to force filtration (this can be very slow in large directories) -->
 - *See Also:* [cdls](#cdls)  
 - *See Also:* [cls](#cls)  
-- *See Also:* [dls](#dls) 
+- *See Also:* [dls](#dls)  
 
 ##### nameSpacer
-Check if a given path exists and return a version of it that doesn't
+Check if a given path exists and return a version of it that doesn't  
 ```powershell
 > nameSpacer c:/users
 c:/users_2
 ```
 
 ##### next
-Scan a sequence of directories for names matching a given extension
+Scan a sequence of directories for names matching a given extension  
 ```powershell
-> ext "extension" "directory 1" ... "directory n"
+> next "extension" "directory 1" ... "directory n"
 ```
 - *See Also:* [ext](#ext)  
 
@@ -291,18 +361,19 @@ Create a new powershell script
     # $base/nameN.ps1
 # and open each one in a text editor
 ```
-
+- Assumes you have set a `$scripts` variable  
+- Assumes you have set a `editor` alias  
 
 
 ##### np
-open in notepad  
+open [in] notepad  
 ```powershell
 > np file/path
 ```
 
 
 ##### npp
-open in notepad++  
+open [in] notepad++  
 ```powershell
 > npp path/to/some/thing/or/place
 ```
@@ -310,26 +381,22 @@ open in notepad++
 
 
 ##### onde
-Find out precisely where executables on the path are located
+Find out precisely where executables on the path are located  
 ```powershell
 > onde exe1 exe2 etc..
 ```
-- *Note:* You will have to append '.ps1' if you are specifically looking for powershell scripts  
-
-
-
-
+- *Note:* You will have to append '.ps1' if you are looking for powershell scripts  
 
 
 ##### pcd
-cd into the directory in your clipboard
+cd into the directory in your clipboard  
 ```powershell
 > pcd
 ```
 
 
 ##### play
-Play a sequence of notes on a single 11-note octave "keyboard" rooted at 440hz
+Play a sequence of notes on a single 11-note octave "keyboard" rooted at 440hz  
 ```powershell
 > play 0 1 1 2 3 5 8 13 21
 ```
@@ -337,10 +404,10 @@ Play a sequence of notes on a single 11-note octave "keyboard" rooted at 440hz
 
 ##### pop
 open something with explorer and focus its window.  
-"start-process"/"start"/etc don't focus the new window in Windows Terminal  
 ```powershell
 > pop
 ```
+- "start-process"/"start"/etc don't focus the new window  
 
 
 ##### pout
@@ -351,7 +418,7 @@ Repetitive echo that was probably the first powershell script i wrote. I forgot 
 
 
 ##### pow
-Raise some argument to a power of choice
+Raise some argument to a power of choice  
 ```powershell
 > pow 2 3
 8
@@ -359,32 +426,35 @@ Raise some argument to a power of choice
 
 
 ##### profile
-Open your `$profile` file
+Open your `$profile` file  
 ```powershell
 > profile
 ```
+- Assumes you have set a `editor` alias  
 
 
 ##### pub
-Pub get a sequence of arguments
+Pub get a sequence of arguments  
 ```powershell
 > pub uri1 uri2 #etc...
 ```
 - Assumes you have installed flutter/dart installed  
 
+
 ##### pushenv
-Set augment an environment variable
+Augment an environment variable  
 ```powershell
-> environ "key" "value" "separator"
-> environ "key" "value" 
+> pushenv "key" "value" "separator"
+> pushenv "key" "value" 
 ```
 - **Not** persistent  
 - **Remember** to use a separator if needed  
 
+
 ##### putenv
-Set an environment variable
+Set an environment variable  
 ```powershell
-> environ "variable" "value"
+> putenv "variable" "value"
 ```
 - **Not** persistent  
 
@@ -393,16 +463,35 @@ Set an environment variable
 Cat the readme.md files of multiple directories by simply stating the folder names  
 ```powershell
 > cd my/repository/depository
-> readus tensorflow python some/other/repo/or/folder/maybe/its/on/another/disk/or/something/you/decide
+> readus tensorflow python some/other/repo or/folder maybe/its/on/another/disk idk/up/to/you/really
 ```
 
 
 ##### recycle
-Send path to the recycle bin
+Send path to the recycle bin  
 ```powershell
 > recycle path1 path2 pathN
 ```
 - Currently broken  
+
+
+##### rmp
+Remove a file whose path is in the clipboard  
+```powershell
+> rmp
+```
+- Equivalent to `rm (get-clipboard)`  
+
+
+##### sample
+move the selected file to the samples folder  
+```powershell
+> sample
+# gets path from clipboard
+> sample arg1 arg2 ... argN
+# act on a sequence of arguments
+```
+- Assumes you have set a `$samples` variable  
 
 
 ##### scrap
@@ -410,41 +499,50 @@ Rage quit the project in the current directory by sending it to the recycle bin
 ```powershell
 > scrap
 ```
-- Requires recycle
+- Requires recycle  
+
+
+##### sizes
+Print the names and sizes of files in the current directory, first argument(s) denote(s) [a] search term[s], if the last argument is an int it will mean b, kb, mb (default), or gb mode  
+```powershell
+> sizes [search_term_1 ... search_term_N] [0_1_2_or_3]
+```
+- case insensitive
 
 
 ##### sound
-Open the sound control panel
+Open the sound control panel  
 ```powershell
 > sound
 ```
 
 
 ##### splee2
-Split an audio stream into a vocal and instrumental track
+Split an audio stream into a vocal and instrumental track  
 ```powershell
 > splee2 path/to/audio/file
 ```
-- Assumes you have python and have previously installed [spleeter](https://github.com/deezer/spleeter)
+- Assumes you have python and have previously installed [spleeter](https://github.com/deezer/spleeter)  
+
 
 ##### splee4
-Split an audio stream into a vocal, instrumental, drum, bass, and piano tracks
+Split an audio stream into a vocal, instrumental, drum, bass, and piano tracks  
 ```powershell
 > splee4 path/to/audio/file
 ```
-- Assumes you have python and have previously installed [spleeter](https://github.com/deezer/spleeter)
+- Assumes you have python and have previously installed [spleeter](https://github.com/deezer/spleeter)  
 
 
 ##### splee5
-Split an audio stream into a vocal, instrumental, drum, bass, and piano tracks
+Split an audio stream into a vocal, instrumental, drum, bass, and piano tracks  
 ```powershell
 > splee5 path/to/audio/file
 ```
-- Assumes you have python and have previously installed [spleeter](https://github.com/deezer/spleeter)
+- Assumes you have python and have previously installed [spleeter](https://github.com/deezer/spleeter)  
 
 
 ##### splitext
-Split the last suffix from the path
+Split the last suffix from the path  
 ```powershell
 > splitext path/to/something.suffix1.suffix2
 suffix2
@@ -452,39 +550,76 @@ suffix2
 
 
 ##### sublime_docs
-Serve the unofficial Sublime Text documentation locally
+Serve the unofficial Sublime Text documentation locally  
 ```powershell
 > sublime_docs
 ```
+- Assumes you have previously cloned [docs.sublimetext.io](https://github.com/sublimetext-io/docs.sublimetext.io)  
+
+
+##### st
+Open a sequence of arguments (or the current directory) in sublime text  
+```powershell
+> st dir/file1.ext file2.ext .
+```
+- Assumes you have previously installed [Sublime Text](https://www.sublimetext.com) and have it aliased as "sublime"  
 
 
 ##### tilde
-ssh into tilde
+ssh into tilde  
 ```powershell
 > tilde
 ```
 
 
 ##### unix
-Convert the path of the current directory to wsl-unix form and send it to the clip-board
+Convert the path of the current directory to wsl-unix form and send it to the clip-board  
 ```powershell
 > unix
 ```
 
 
+##### y22
+Grab a 1280x720-720p MP4 video (where applicable)  
+```powershell
+> y22 url1 url2 urlN
+```
+- Assumes you have installed [youtube-dl](https://github.com/ytdl-org/youtube-dl)  
+- Assumes $ytdls is set  
+
+
 ##### yda
-Youtube download the audio streams associated with a sequence of arguments
+Youtube download the audio streams associated with a sequence of arguments  
 ```powershell
 > yda url1 url2 urlN
 ```
-- Assumes you have installed [youtube-dl](https://github.com/ytdl-org/youtube-dl)
+- Assumes you have installed [youtube-dl](https://github.com/ytdl-org/youtube-dl)  
+- Assumes $ytdls is set  
+- uses [ind](#ind)  
+
+
+##### ydc
+Check the available formats associated with a sequence of arguments  
+```powershell
+> ydc url1 url2 urlN
+```
+- Assumes you have installed [youtube-dl](https://github.com/ytdl-org/youtube-dl)  
 
 
 ##### ydl
-Youtube download the audio streams associated with a sequence of arguments
+Youtube download the audio streams associated with a sequence of arguments  
 ```powershell
 > ydl url1 url2 urlN
 ```
-- Assumes you have installed [youtube-dl](https://github.com/ytdl-org/youtube-dl)
+- Assumes you have installed [youtube-dl](https://github.com/ytdl-org/youtube-dl)  
+- uses [ind](#ind)  
  
 
+##### ytdls
+cd into a pre-defined directory  
+```powershell
+C:\Windows\System32> ytdls url1 url2 urlN
+pre/defined/directory> 
+```
+- Assumes $ytdls is set  
+- uses [ind](#ind)  

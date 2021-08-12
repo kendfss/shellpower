@@ -1,1 +1,1 @@
-start $profile
+editor $profile

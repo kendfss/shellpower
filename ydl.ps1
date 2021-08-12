@@ -1,11 +1,11 @@
-$destination = "F:\ytdls"
+$destination = $ytdls
 $origin = location
 $n = 0
 
 foreach ($link in $args) {
     $n += 1
     cd $destination
-    [string]::Format("{0} of {1}", $n, $args.length)
+    ind $n $args.length
     youtube-dl $link
     cd $origin
     ''
