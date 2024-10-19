@@ -6,17 +6,30 @@ $help = 'Create new powershell scripts
             $scripts/name2.ps1
             ...
             $scripts/nameN.ps1
-        And then open each file with the system default
+        And then open each file with the "editor" command defined in $profile 
 '
-    
+
+
+$pths=@((join-path $scripts "readme.md"))
+
 if ($args.length) {
     foreach ($arg in $args) {
         $pth = join-path $scripts $arg
         $pth += ($pth.endswith(".ps1")) ? "" : ".ps1"
         touch $pth
-        editor (join-path $scripts "readme.md")
-        editor $pth
+        $pths += $pth
     }
 } else {
     echo $help
+}
+
+# echo $pths
+
+editor ($pths)
+
+# clean up
+foreach ($file in (dir $scripts)) {
+    if (!$file.length) {
+        rm $file
+    }
 }

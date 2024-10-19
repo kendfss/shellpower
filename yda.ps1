@@ -6,7 +6,7 @@ foreach ($arg in $args) {
     $n += 1
     cd $destination
     ind $n $args.length
-    youtube-dl -x $arg    
+    yt-dlp -x $arg    
     cd $origin
     ''
     ''
