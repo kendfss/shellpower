@@ -1,6 +1,6 @@
 $name = $args[0]
-if (-not (isfile "readme.md")) {
-    echo $name >> readme.md    
+if (-not (isfile "README.md")) {
+    echo $name >> README.md    
 }
 git init
 git add *

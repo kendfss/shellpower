@@ -6,7 +6,7 @@ if ($args.length) {
         ls .
         cd $origin
     }
-    cd $arg
+    # cd $arg
 } else {
     ls .
 }

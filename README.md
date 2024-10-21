@@ -13,6 +13,7 @@ This repository holds PowerShell scripts that I created for personal convenience
 Add them to a directory that is on your Path environment variable for optimal use.  
 
 You *__will__* have to personalize:  
+- [.profile](./.profile)
 - [tilde](#tilde)  
 - [clone](#clone)  
 - [mdn](#mdn)  
@@ -43,7 +44,8 @@ The number corresponds to the number of audio tracks the corresponding model is 
 ##### alert
 Produce a sequence of n beeps with random frequency  
 ```powershell
-> alert 3
+> alert 3 # produces 3 beeps 
+> alert # produces a random number (lower than 12) 
 ```
 - *Requires:* [play](#play)  
 
@@ -70,6 +72,7 @@ Echo n blank lines
 
 
 
+>
 ```
 - *See Also:* [goc](#goc)  
 
@@ -105,6 +108,7 @@ Same as [cpr](#cpr) except it accepts arguments manually
 ```powershell
 > choose (exts mkv webm mp4)
 ```
+
 ##### clone
 Open your git cloning manager  
 ```powershell
@@ -119,7 +123,7 @@ Close a running process
 ```
 
 ##### cls
-Clears the screen before implementing [cdls](#cdls) and returning to starting directory  
+Clears the screen before perfoming [cdls](#cdls) and returning to starting directory  
 ```powershell
 > cls folder1 ../folder2 folder3 
 # closes fl64.exe
@@ -223,13 +227,13 @@ Open foobar2000
 - *Assumes:* it is installed at *"C:\Program Files (x86)\foobar2000"*  
 
 
-##### goc
-Go doc any number of arguments  
+
+##### gcd
+`git clone` and `cd` into a repository
 ```powershell
-> goc image.decode os.executable io/fs
+c:/users/someone> gcd https://github.com/kendfss/shellpower
+c:/users/someone/shellpower>
 ```
-- *Assumes:* [Golang](https://golang.org) has been installed  
-- *See Also:* [blank](#blank)  
 
 
 ##### gitfast
@@ -237,7 +241,16 @@ Quickly init, commit, and push a directory to github
 ```powershell
 > gitfast "repo-name"
 ```
-- *Assumes:* You're tryin to push to this github page  
+- *Assumes:* You're tryin to push to one of my repositories  
+
+
+##### goc
+Go doc any number of arguments  
+```powershell
+> goc image.decode os.executable io/fs
+```
+- *Assumes:* [Golang](https://golang.org) has been installed  
+- *See Also:* [blank](#blank)  
 
 
 ##### gomo
@@ -253,7 +266,7 @@ cd into ```$env:gopath```
 ```powershell
 > gosite
 ```
-- *Assumes:* [Golang](https://golang.org) has been installed  
+- *Assumes:* [Go](https://golang.org) has been installed  
 
 
 ##### gosrc
@@ -309,13 +322,14 @@ Check if a path is a file in the file system
 > isfile path/in/question
 ```
 
-
 ##### isit
-Return the boolean values associated with arguments  
+Return a boolean indicating if each argument is a command on this system  
 ```powershell
 > isit arg1 arg2 ... argN
 ```
 - Wraps *get-command* 
+- See also [which](#which)
+
 
 
 ##### mcd
@@ -616,6 +630,13 @@ Convert the path of the current directory to wsl-unix form and send it to the cl
 > unix
 ```
 
+##### which
+Echo the full paths (if found) of the given arguments
+```powershell
+> which arg1 arg2 ... argN
+```
+- Wraps *get-command* 
+- See also [isit](#isit)
 
 ##### y22
 Grab a 1280x720-720p MP4 video (where applicable)  

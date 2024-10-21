@@ -1,1 +1,1 @@
-editor $profile
+editor $profile && . $profile

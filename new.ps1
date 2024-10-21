@@ -6,7 +6,7 @@ $help = 'Create new powershell scripts
             $scripts/name2.ps1
             ...
             $scripts/nameN.ps1
-        And then open each file with the "editor" command defined in $profile 
+        And then open each file with the "editor" alias defined in $profile 
 '
 
 

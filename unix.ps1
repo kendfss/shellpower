@@ -5,8 +5,6 @@ if ($args.length) {
         $path = $args[$o]
         $path = ("/mnt/" + (($path -replace "\\", "/") -replace ":", "")).tolower() 
         echo $path
-        echo $path
-        echo $path
         # $out += '"' + ("/mnt/" + (($path -replace "\\", "/") -replace ":", "")).tolower() + '"'
         # $out += ($o -le $args.length-2) ? "\n" : ""
         $out += $path

@@ -21,6 +21,10 @@ set-alias editor (where.exe hx)
 set-alias s select
 set-alias touch "C:\Program Files\Git\usr\bin\touch.exe"
 set-alias grep "C:\Program Files\Git\usr\bin\grep.exe"
+set-alias find "C:\Program Files\Git\usr\bin\find.exe"
+set-alias less "C:\Program Files\Git\usr\bin\less.exe"
+set-alias head "C:\Program Files\Git\usr\bin\head.exe"
+set-alias tail "C:\Program Files\Git\usr\bin\tail.exe"
 set-alias gbash "C:\Program Files\Git\git-bash.exe"
 # Variables
 # $startup = "C:\Users\Kenneth\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup"
