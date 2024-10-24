@@ -563,6 +563,17 @@ Print the names and sizes of files in the current directory, first argument(s) d
 
 
 ##### sound
+Print the sizes of the given arguments. Size of all child files for directories.
+```powershell
+> sizeof .ssh
+2012
+> sizeof links
+1399
+> sizeof music
+37889861619
+```
+
+##### sound
 Open the sound control panel  
 ```powershell
 > sound
